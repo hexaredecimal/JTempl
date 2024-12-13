@@ -1,3 +1,8 @@
+<div align="center">
+    <img src="./assets/jtempl.png" width="40%" />
+</div>
+
+
 # JTempl 
 >> A templating library for JAVA inspired by the one seen on tsoding streams 
 >> used to created templates for c.
