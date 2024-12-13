@@ -24,8 +24,9 @@ You can use the template like this in your code, especially when using Blazingwe
 
 @Get("/")
 public static home(BlazingResponse response) {
-    var page = IndexTemplate.generate(); 
-    response.sendData(page);
+    var page = IndexTemplate.generate();
+    response.setHeader("Content-Type", "text/html");
+    response.sendResponse(page);
 }
 ```
 
