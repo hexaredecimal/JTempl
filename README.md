@@ -15,7 +15,7 @@
 
 ## Usage
 ```sh
-$ java -jar JTempl-dist.jar index.jsp
+$ java -jar JTempl-dist.jar -package com your.webapp -dir src/com/your/web/app index.jsp
 ```
 This will create a file called IndexTemplate.java with the template code inside a static method called generate. 
 
