@@ -8,9 +8,10 @@
 >> used to created templates for c.
 
 ## Why?
-- Learn how templating engines work
+- Learn how templating engines work and how to implemented one 
 - I got free time on my hands. 
 - Why not. 
+>> This is a naive implementation and it is ment to be as simple as possible to learn and use.
 
 ## Usage
 ```sh
@@ -33,4 +34,9 @@ public static home(BlazingResponse response) {
 ## TODO
 - Support receiving user arguments on the generate method. 
 - Make this a library as well. 
+
+## Examples
+JTempl has a syntax similar to JSP and uses a single `%` to start and end template insertions. Examples are available in the <a href="./examples">examples</a> directory. 
+
+
 
