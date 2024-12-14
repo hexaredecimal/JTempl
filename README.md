@@ -38,5 +38,14 @@ public static home(BlazingResponse response) {
 ## Examples
 JTempl has a syntax similar to JSP and uses a single `%` to start and end template insertions. Examples are available in the <a href="./examples">examples</a> directory. 
 
+## PITFALLS
+- JTemple works on a line-by-line basis. You cannot have multiple template insertions in one line. E.g:
 
+```html
+...
+    % for (int i = 0; i < 10; i++) { %
+        <h1> % i % * 2 = % i * 2 % </h1>
+    % } %
+...
+```
 
