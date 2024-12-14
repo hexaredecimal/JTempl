@@ -19,17 +19,38 @@ public class JTempl {
 			return;
 		}
 
-		String input = args[args.length - 1];
+		Config config = new Config(args);
+		config.parse();
+
+		var input = config.getInput_path(); 
+		if (input == null) {
+			printUsage();
+			return;
+		}
+		
 		var out = TemplEngine.generate(new File(input));
-		File out_file = new File(out.getName());
+		String path = "./";
+		if (config.getOut_path() != null) {
+			path = config.getOut_path();
+		}
+		path = path + "/" + out.getName();
+		File out_file = new File(path);
 		out_file.createNewFile();
-		FileSystem.writeToFile(new File(out.getName()), out.getContents());
+		String contents = out.getContents();
+		if (config.getPackage_name() != null) {
+			contents = String.format("package %s;\n%s", config.getPackage_name(), contents);
+		}
+		FileSystem.writeToFile(new File(path), contents);
 	}
 
 	public static void printUsage() {
 		System.out.println("templ [options] file");
 		System.out.println();
 		System.out.println("options :".indent(4).trim());
-		System.out.println("-package name".indent(8));
+		System.out.println("-package name     - Adds the generated code to template".indent(8).replaceAll("\n", ""));
+		System.out.println("-dir path         - generate this code to (./ by default)".indent(8).replaceAll("\n", ""));
+		System.out.println("-help             - Shows this usage".indent(8));
+		System.out.println("Made with Love by Gama Sibusiso".indent(8 * 2));
 	}
+
 }
