@@ -12,6 +12,8 @@ import java.util.List;
 public class TemplEngine {
 
 	private static int line_count = 0;
+	private static String args = null;
+	private static StringBuilder imports;
 
 	public static FileOutput generate(File input_file) {
 		var input = FileSystem.readFileToString(input_file.getAbsolutePath()).unwrap();
