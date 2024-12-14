@@ -50,7 +50,8 @@ public class JTempl {
 		System.out.println("-package name     - Adds the generated code to template".indent(8).replaceAll("\n", ""));
 		System.out.println("-dir path         - generate this code to (./ by default)".indent(8).replaceAll("\n", ""));
 		System.out.println("-help             - Shows this usage".indent(8));
-		System.out.println("Made with Love by Gama Sibusiso".indent(8 * 2));
+		System.out.println("Made with Love by Gama Sibusiso".indent(8 * 2).replaceAll("\n", ""));
+		System.out.println(("version: " + Config.version).indent(8 * 3));
 	}
 
 }
