@@ -32,15 +32,21 @@ public class Config {
 		boolean expect_dir = false;
 		for (int i = 0; i < args.length - 1; i++) {
 			String top = args[i];
-			if (top.equals("-package")) {
-				expect_package = true;
-				continue;
-			} else if (top.equals("-dir")) {
-				expect_dir = true;
-				continue;
-			} else if (top.equals("-help")) {
-				JTempl.printUsage();
-				return;
+			switch (top) {
+				case "-package", "-p" -> {
+					expect_package = true;
+					continue;
+				}
+				case "-dir", "-d" -> {
+					expect_dir = true;
+					continue;
+				}
+				case "-help", "-h" -> {
+					JTempl.printUsage();
+					return;
+				}
+				default -> {
+				}
 			}
 
 			if (expect_package) {
