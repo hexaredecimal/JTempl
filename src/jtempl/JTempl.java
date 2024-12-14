@@ -47,9 +47,9 @@ public class JTempl {
 		System.out.println("templ [options] file");
 		System.out.println();
 		System.out.println("options :".indent(4).trim());
-		System.out.println("-package name     - Adds the generated code to template".indent(8).replaceAll("\n", ""));
-		System.out.println("-dir path         - generate this code to (./ by default)".indent(8).replaceAll("\n", ""));
-		System.out.println("-help             - Shows this usage".indent(8));
+		System.out.println("(-package | -p) name             - Adds the generated code to template".indent(8).replaceAll("\n", ""));
+		System.out.println("(-dir     | -d) path             - generate this code to (./ by default)".indent(8).replaceAll("\n", ""));
+		System.out.println("(-help    | -h)                  - Shows this usage".indent(8));
 		System.out.println("Made with Love by Gama Sibusiso".indent(8 * 2).replaceAll("\n", ""));
 		System.out.println(("version: " + Config.version).indent(8 * 3));
 	}
