@@ -9,6 +9,7 @@ public class Config {
 	private String package_name = null, out_path = null;
 	private String input_path;
 	private String[] args;
+	public static final String version = "1.5";
 
 	public String getPackage_name() {
 		return package_name;
