@@ -61,7 +61,7 @@ public class TemplEngine {
 						sb.append(code).append("\n");
 					} else {
 						var ff = tokens.getFirst();
-						if (Parser.isId(ff) || Parser.isNumber(ff) || Parser.isString(ff) || code.contains("[") || code.contains("]")) {
+						if (Parser.isId(ff) || Parser.isNumber(ff) || Parser.isString(ff) || Parser.isChar(ff) || code.contains("[") || code.contains("]")) {
 							sb.append("sb.append(").append(code).append(");\n");
 						} else {
 							sb.append(ff).append("\n");
