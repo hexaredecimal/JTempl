@@ -30,7 +30,9 @@ public class TemplEngine {
 		imports = new StringBuilder();
 		input.lines().forEach(line -> {
 			line_count++;
-			if (line.trim().isEmpty()) return;
+			if (line.trim().isEmpty()) {
+				return;
+			}
 			if (line.startsWith("#")) {
 				line = line.replaceAll("#", "").replace('(', ' ').replace(')', ' ').trim();
 				if (line.contains("import")) {
