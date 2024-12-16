@@ -125,6 +125,17 @@ class %s {
 					tokens.add(collectNumber(input));
 				} else if (top == '"') {
 					tokens.add(collectString(input));
+				} else if (top == '\'') {
+					index++;
+					char c = input.charAt(index);
+					index++;
+					char next = input.charAt(index);
+					if (next != '\'') {
+						System.out.println("Invalid char symbol: '" + c + next);
+						System.exit(0);
+					}
+					tokens.add(String.format("'%s'", c));
+					index++;
 				} else {
 					tokens.add("" + top);
 					index++;
