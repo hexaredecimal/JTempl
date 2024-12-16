@@ -190,11 +190,13 @@ class %s {
 		}
 
 		public static boolean isId(String input) {
-			if (!Character.isAlphabetic(input.charAt(0))) {
+			if (!Character.isLetter(input.charAt(0))) {
 				return false;
 			}
 			for (int i = 1; i < input.length(); i++) {
-				if (!Character.isAlphabetic(input.charAt(i)) || !Character.isDigit(input.charAt(i))) {
+				char c = input.charAt(i);
+				boolean isAlph = Character.isLetterOrDigit(c);
+				if (!isAlph) {
 					return false;
 				}
 			}
