@@ -219,6 +219,10 @@ class %s {
 		public static boolean isString(String input) {
 			return input.charAt(0) == '"' && input.charAt(input.length() - 1) == '"';
 		}
+
+		public static boolean isChar(String input) {
+			return input.charAt(0) == '\'' && input.charAt(input.length() - 1) == '\'' && input.length() == 3;
+		}
 	}
 
 }
