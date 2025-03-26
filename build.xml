@@ -10,27 +10,6 @@
 <project name="JTempl" default="default" basedir=".">
     <description>Builds, tests, and runs the project JTempl.</description>
     <import file="nbproject/build-impl.xml"/>
-
-
-    <target name="-post-jar">
-        <echo message="Building standalone jar file: ${dist.dir}/JTempl-dist.jar"/>
-        <jar destfile="${dist.dir}/JTempl-tmp-fat.jar" filesetmanifest="skip">
-            <zipgroupfileset dir="${dist.dir}"  includes="*.jar*"/>
-            <zipgroupfileset dir="${dist.dir}/lib"  includes="*.jar*"/>
-            <manifest>
-                <attribute name="Main-Class" value="jtempl.JTempl" />
-            </manifest>
-        </jar>
-        <zip destfile="${dist.dir}/JTempl-dist.jar">
-            <zipfileset src="${dist.dir}/JTempl-tmp-fat.jar"
-                excludes="META-INF/*.SF, META-INF/*.DSA, META-INF/*.RSA"/>
-        </zip>
-        <delete file="${dist.dir}/JTempl-tmp-fat.jar" />
-    </target>
-            
-
-
-		
     <!--
 
     There exist several targets which are by default empty and which can be 
