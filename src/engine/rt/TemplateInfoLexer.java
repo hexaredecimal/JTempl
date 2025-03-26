@@ -13,6 +13,7 @@ public class TemplateInfoLexer {
 
 	private String code;
 	private String path;
+	private String args;
 	private List<String> errors;
 	private List<String> imports;
 	private String _package;
@@ -20,6 +21,7 @@ public class TemplateInfoLexer {
 	public TemplateInfoLexer(String code, String path) {
 		this.code = code;
 		this.path = path;
+		this.args = null;
 		this.errors = new ArrayList<>();
 		this._package = null;
 		this.imports = new ArrayList<>();
@@ -31,6 +33,10 @@ public class TemplateInfoLexer {
 
 	public String getPackage() {
 		return _package;
+	}
+
+	public String getArgs() {
+		return args;
 	}
 
 	public void lex() {
@@ -52,14 +58,14 @@ public class TemplateInfoLexer {
 			}
 
 			var splits = line.split(" ");
-			if (splits[0].equals("package") == false && splits[0].equals("import") == false) {
+			String operation = splits[0].trim();
+			if (operation.equals("package") == false && operation.equals("import") == false && operation.equals(":params") == false) {
 				int sp = line.indexOf(" ");
 				line = sp > 0 ? line.substring(0, sp) : line;
 				errors.add(Errors.create(path, i + 1, col, "Invalid meta data description found: " + splits[0]));
 				continue;
 			}
 
-			String operation = splits[0];
 			col += operation.length();
 			line = line.substring(operation.length());
 
@@ -70,6 +76,11 @@ public class TemplateInfoLexer {
 
 			if (operation.equals("import")) {
 				imports.add(line.replaceAll(";", ""));
+			} else if (operation.equals(":params")) {
+				args = line
+					.replaceAll(";", "")
+					.replace('(', ' ')
+					.replace(')', ' ').trim();
 			} else {
 				if (_package != null) {
 					errors.add(Errors.create(path, i + 1, col, "Package aleady set to " + _package + " but " + line + " is provided"));
