@@ -39,8 +39,8 @@ public class Engine {
 			sb.append(node.exec());
 		}
 
-		var outFile = config.getOutFile() == null ? TypingCases.title(filepath) : config.getOutFile();
-		code = processClass(sb.toString(), outFile, config);
+		var outFile = config.getOutFile() == null ? filepath: config.getOutFile();
+		code = processClass(sb.toString(), TypingCases.title(outFile), config, tinfo.getArgs());
 
 		if (package_ != null) {
 			sb.append(String.format("package %s;\n", package_));
@@ -61,22 +61,26 @@ public class Engine {
 			if (outFolder != null) {
 				outFile = String.format("%s.java", outFolder + TypingCases.title(Fs.pathToName(outFile)));
 			}
+			System.out.println("Writing to: " + outFile);
 			out.write(outFile);
 		}
 	}
 
-	private String processClass(String code, String file, Config config) {
+	private String processClass(String code, String file, Config config, String args) {
 		String name = Fs.pathToName(file);
-		name = String.format("%s", name);
+		name = Character.isLowerCase(name.charAt(0)) 
+			? TypingCases.title(name) 
+			: name;
+
 		StringBuilder sb = new StringBuilder();
 		sb
 			.append(String.format("public class %s {", name))
 			.append("\n")
-			.append("public static String generate() {".indent(4))
+			.append(String.format("public static String generate(%s) {", args == null ? "" : args).indent(4))
 			.append("\n")
 			.append("StringBuilder sb = new StringBuilder();".indent(8))
 			.append(code.indent(4))
-			.append("return sb.toString();".indent(8))
+			.append("return sb.toString().trim();".indent(8))
 			.append("}".indent(4))
 			.append("}".indent(0));
 		
