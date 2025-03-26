@@ -13,7 +13,7 @@ public class HtmlTextNodeAst implements Ast {
 
 	@Override
 	public String exec() {
-		return String.format("sb.append(\"\"\"%s\"\"\");", this.text ).indent(4);
+		return String.format("sb.append(\"\"\"\n%s\n\"\"\");", this.text ).indent(4);
 	}
 
 	@Override
