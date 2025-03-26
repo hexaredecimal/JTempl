@@ -125,6 +125,10 @@ public class FileLexer {
 			return new InsertionNodeAST(code);
 		}
 
+		if (kind == TokenKind.ID) {
+			return new InsertionNodeAST(code);
+		}
+
 		It.todo("Make exhaustive: " + kind + " " + text);
 		return null;
 	}
