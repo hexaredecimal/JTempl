@@ -15,7 +15,7 @@
 
 ## Usage
 ```sh
-$ java -jar JTempl-dist.jar -package com.your.webapp -dir src/com/your/web/app index.jsp
+$ java -jar JTempl.jar -p com.your.webapp -d src/com/your/web/app index.xhtml
 ```
 This will create a file called IndexTemplate.java with the template code inside a static method called generate. 
 
@@ -33,19 +33,7 @@ public static home(BlazingResponse response) {
 
 ## TODO
 - Support receiving user arguments on the generate method. 
-- Make this a library as well. 
 
 ## Examples
-JTempl has a syntax similar to JSP and uses a single `%` to start and end template insertions. Examples are available in the <a href="./examples">examples</a> directory. 
-
-## PITFALLS
-- JTemple works on a line-by-line basis. You cannot have multiple template insertions in one line. E.g:
-
-```html
-...
-    % for (int i = 0; i < 10; i++) { %
-        <h1> % i % * 2 = % i * 2 % </h1>
-    % } %
-...
-```
+JTempl has a syntax similar to JSP and uses `%%` to start and end template insertions. Examples are available in the <a href="./examples">examples</a> directory. 
 
