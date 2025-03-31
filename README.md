@@ -1,7 +1,3 @@
-<div align="center">
-    <img src="./assets/jtempl.png" width="40%" />
-</div>
-
 
 # JTempl 
 >> A html/Template to java class translation tool
