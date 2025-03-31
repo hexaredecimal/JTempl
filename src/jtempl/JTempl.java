@@ -3,6 +3,7 @@ package jtempl;
 import engine.Engine;
 import engine.config.Config;
 import engine.errors.Errors;
+import java.io.File;
 
 /**
  *
@@ -17,8 +18,18 @@ public class JTempl {
 		Config config = new Config(args);
 		config.parse();
 
-		if (config.getInputFile() == null) {
+		var input = config.getInputFile();
+		if (input == null) {
 			Errors.die("No input file");
+		}
+
+		var fp = new File(input);
+		if (!fp.exists()) {
+			Errors.die(String.format("File does not exist: `%s`", input));
+		}
+
+		if (!fp.canRead()) {
+			Errors.die(String.format("File cannot be read: `%s`", input));
 		}
 
 		
