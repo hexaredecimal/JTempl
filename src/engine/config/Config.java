@@ -17,6 +17,7 @@ public class Config {
 	private String inFile;
 	private String outFile;
 	private boolean dump;
+	private boolean repl;
 
 	private static final String VERSION = "0.1.1";
 	private static final String APP = "JTempl";
@@ -28,6 +29,7 @@ public class Config {
 		this.inFile = null;
 		this.outFile = null;
 		this.dump = false;
+		this.repl = false;
 		this.args = new ArrayList<>(List.of(args));
 	}
 
@@ -51,6 +53,10 @@ public class Config {
 
 	public boolean isDump() {
 		return dump;
+	}
+
+	public boolean isRepl() {
+		return repl;
 	}
 
 	private Result<String, Exception> shift() {
@@ -87,9 +93,11 @@ public class Config {
 				help();
 			} else if (arg.equals("-s")) {
 				dump = true;
-			}  else if (arg.equals("-v")) {
+			} else if (arg.equals("-r")) {
+				repl = true;
+			} else if (arg.equals("-v")) {
 				version();
-			}else {
+			} else {
 				if (inFile == null) {
 					inFile = arg;
 				} else {
@@ -110,6 +118,8 @@ public class Config {
 		System.out.print("- Specifies the output file name".indent(4));
 		System.out.print("\t-s");
 		System.out.print("- Outputs to stdout.".indent(4));
+		System.out.print("\t-r");
+		System.out.print("- Enters repl mode.".indent(4));
 		System.out.print("\t-v");
 		System.out.print("- Dispalys version information.".indent(4));
 		System.out.print("\t-h");
