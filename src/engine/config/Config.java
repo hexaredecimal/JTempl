@@ -87,7 +87,7 @@ public class Config {
 				help();
 			} else if (arg.equals("-s")) {
 				dump = true;
-			}  else if (args.equals("-v")) {
+			}  else if (arg.equals("-v")) {
 				version();
 			}else {
 				if (inFile == null) {
@@ -110,6 +110,8 @@ public class Config {
 		System.out.print("- Specifies the output file name".indent(4));
 		System.out.print("\t-s");
 		System.out.print("- Outputs to stdout.".indent(4));
+		System.out.print("\t-v");
+		System.out.print("- Dispalys version information.".indent(4));
 		System.out.print("\t-h");
 		System.out.print("- Displays this help information.".indent(4));
 
@@ -119,6 +121,7 @@ public class Config {
 	private void version() {
 		System.out.println(String.format("%s version %s", APP, VERSION));
 		System.out.println("by: " + Author);
+		System.exit(Errors.EXIT_SUCCESS);
 	}
 
 }
