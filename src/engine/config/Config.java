@@ -18,6 +18,10 @@ public class Config {
 	private String outFile;
 	private boolean dump;
 
+	private static final String VERSION = "0.1.1";
+	private static final String APP = "JTempl";
+	private static final String Author = "Gama Sibusiso (https://github.com/hexaredecimal)";
+
 	public Config(String[] args) {
 		this.outFolder = "./";
 		this.packageName = null;
@@ -83,7 +87,9 @@ public class Config {
 				help();
 			} else if (arg.equals("-s")) {
 				dump = true;
-			} else {
+			}  else if (args.equals("-v")) {
+				version();
+			}else {
 				if (inFile == null) {
 					inFile = arg;
 				} else {
@@ -108,6 +114,11 @@ public class Config {
 		System.out.print("- Displays this help information.".indent(4));
 
 		System.exit(Errors.EXIT_SUCCESS);
+	}
+
+	private void version() {
+		System.out.println(String.format("%s version %s", APP, VERSION));
+		System.out.println("by: " + Author);
 	}
 
 }
