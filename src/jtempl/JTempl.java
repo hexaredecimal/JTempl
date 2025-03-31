@@ -18,6 +18,13 @@ public class JTempl {
 		Config config = new Config(args);
 		config.parse();
 
+		Engine engine = new Engine(config);
+		
+		if (config.isRepl()) {
+			engine.repl();
+			return;
+		}
+		
 		var input = config.getInputFile();
 		if (input == null) {
 			Errors.die("No input file");
@@ -32,8 +39,6 @@ public class JTempl {
 			Errors.die(String.format("File cannot be read: `%s`", input));
 		}
 
-		
-		Engine engine = new Engine(config);
 		engine.process();
 	}
 }
