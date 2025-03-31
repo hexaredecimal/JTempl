@@ -4,20 +4,22 @@
 
 
 # JTempl 
->> A templating library for JAVA inspired by the one seen on tsoding streams 
->> used to created templates for c.
+>> A html/Template to java class translation tool
 
 ## Why?
-- Learn how templating engines work and how to implemented one 
-- I got free time on my hands. 
-- Why not. 
->> This is a naive implementation and it is ment to be as simple as possible to learn and use.
+Hard to find standalone tools that do this which are not intergrated with some system
+
+## Features
+- Simple Syntax (Uses %% instead of context based tags unlike jsp (<= vs <% etc))
+- Translates to readable java code
+- Repl support
+
 
 ## Usage
 ```sh
-$ java -jar JTempl.jar -p com.your.webapp -d src/com/your/web/app index.xhtml
+$ jtmpl -p com.your.webapp -d src/com/your/web/app index.xhtml
 ```
-This will create a file called IndexTemplate.java with the template code inside a static method called generate. 
+This will create a file called Index.java with the template code inside a static method called generate. 
 
 You can use the template like this in your code, especially when using BlazingwebX. 
 
@@ -30,9 +32,6 @@ public static home(BlazingResponse response) {
     response.sendResponse(page);
 }
 ```
-
-## TODO
-- Support receiving user arguments on the generate method. 
 
 ## Examples
 JTempl has a syntax similar to JSP and uses `%%` to start and end template insertions. Examples are available in the <a href="./examples">examples</a> directory. 
